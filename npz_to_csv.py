@@ -3,10 +3,15 @@ import os
 import numpy as np
 import pandas as pd
 
+ignore_path = 'venv'
+
 if __name__ == '__main__':
     base_path = input('Enter directory path for data conversion: ')
 
     for base_dir, _, files in os.walk(base_path):
+        if 'venv' in base_dir:
+            continue
+
         for file in files:
             if file.endswith('.npz'):
                 base_file_name = file[:-4]
